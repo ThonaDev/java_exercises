@@ -55,6 +55,12 @@ public class Classroom {
                 break; // ✅ stop the while loop when found
             } else {
                 System.out.println("Not found!!");
+                System.out.print("Try again? (y/n): ");
+                String choice = scanner.next(); // read user input
+
+                if(choice.equalsIgnoreCase("n")){
+                    break; // exit loop if user says no
+                }
             }
         }
     }
