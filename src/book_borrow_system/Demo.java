@@ -1,5 +1,7 @@
 package book_borrow_system;
 
+import java.util.Scanner;
+
 public class Demo {
     public static void main(String[] args) {
         Library lib = new Library("Jomnes Library");
@@ -13,8 +15,26 @@ public class Demo {
         lib.addBook(b1);
         lib.addBook(b2);
 
-        // display
-        lib.displayBook();
-        lib.borrowBook();
+        Scanner scanner = new Scanner(System.in);
+        while (true){
+            System.out.println("==========| Library Menu |==========");
+            System.out.println("1. Display Book");
+            System.out.println("2. Borrow Book");
+
+            System.out.print("Choose option: ");
+            int op = scanner.nextInt();
+
+            switch (op){
+                case 1:
+                    lib.displayBook();
+                    break;
+                case 2:
+                    lib.borrowBook();
+                    break;
+                case 3:
+                    System.out.println("Program excited!");
+                    return;
+            }
+        }
     }
 }

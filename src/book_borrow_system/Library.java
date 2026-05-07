@@ -36,21 +36,24 @@ public class Library {
 
     public void borrowBook(){
         Scanner scanner = new Scanner(System.in);
-        while (true){
-            System.out.print("Enter book id to search: ");
-            int bId = scanner.nextInt();
-            for (Book b : books){
-                if (bId == b.id){
-                    if (b.isBorrowed == true){
-                        System.out.println("Book already borrowed!!");
-                        return;
-                    }
-                    System.out.println("Book is available for borrow.");
+        System.out.print("Enter book id to borrow: ");
+        int bId = scanner.nextInt();
+        boolean found = false;
+
+        for (Book b : books){
+            if (bId == b.id){
+                found = true;
+                if (b.isBorrowed){
+                    System.out.println("Book already borrowed!!");
+                } else {
+                    b.isBorrowed = true;
+                    System.out.println("Book borrowed successfully.");
                 }
-                System.out.println("No book id match!!");
-                return;
+                break;
             }
-//            System.out.println("Book is available for borrow.");
+        }
+        if (!found){
+            System.out.println("Book not found!");
         }
     }
 }
